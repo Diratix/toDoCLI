@@ -1,15 +1,19 @@
 ﻿using toDoCLI.Tasks;
 using toDoCLI.MenuHandler;
+using toDoCLI.DataHandler;
 
 List<ToDoTask> tasks = new List<ToDoTask>();
 bool timeToExit = false;
 
-if (!File.Exists("tasks.json")) {
-    File.Create("tasks.json");
+if (!File.Exists("tasks.tdl")) {
+    File.Create("tasks.tdl").Close();
 }
+
+tasks = DataHandler.readData();
 
 while (true) {
     if (timeToExit) {
+        DataHandler.saveData(tasks);
         Console.WriteLine("See you later!");
         break;
     }
