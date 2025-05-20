@@ -97,5 +97,61 @@ namespace toDoCLI.MenuHandler {
                 }
             }
         }
+
+        public static int markAsDone(List<ToDoTask> tasks) {
+            int len = tasks.Count;
+            int id;
+
+            displayTasks(tasks);
+
+            Console.Write("Select task id to be marked as done: ");
+            while (true) {
+                try {
+                    id = Convert.ToInt32(Console.ReadLine());
+                } catch (FormatException) {
+                    Console.Write("Select task id to be marked as done: ");
+                    continue;
+                }
+
+                if (id > len || id < 0) {
+                    Console.Write("Index out of range. Select task id to be marked as done: ");
+                    continue;
+                }
+
+                if (id == 0) {
+                    return 0;
+                }
+
+                return id;
+            }
+        }
+
+        public static int toDelete(List<ToDoTask> tasks) {
+            int len = tasks.Count;
+            int id;
+
+            displayTasks(tasks);
+
+            Console.Write("Select task id to be deleted: ");
+            while (true) {
+                try {
+                    id = Convert.ToInt32(Console.ReadLine());
+                } catch (FormatException) {
+                    Console.Write("Select task id to be deleted: ");
+                    continue;
+                }
+
+                if (id > len || id < 0) {
+                    Console.Write("Index out of range. Select task id to be deleted: ");
+                    continue;
+                }
+
+                if (id == 0) {
+                    return 0;
+                }
+
+                return id;
+            }
+        }
     }
 }
